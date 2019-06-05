@@ -16,8 +16,17 @@ pipeline {
                 script {
                     echo 'testing...'
                     sh 'python test/test.py'
+                    junit 'test/test-reports/*.xml'
                 }
             } 
+        }
+        stage('Code Analysis') {
+            steps {
+                script {
+                    echo 'code analysis...'
+                    sh 'pylint src/*.py'
+                }
+            }
         }
         stage('Ship') {
             steps {
