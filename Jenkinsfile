@@ -2,15 +2,30 @@ pipeline {
     agent {
         docker { image 'python:3.7.2' }
     }
-    stage('Build') {
-        echo 'building...'
-        sh 'python --version'
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    echo 'building...'
+                    sh 'python --version'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    echo 'testing...'
+                    sh 'python test/test.py'
+                }
+            } 
+        }
+        stage('Ship') {
+            steps {
+                script {
+                    echo 'shipping...'
+                }
+            }
+        }
     }
-    stage('Test') {
-        echo 'testing...'
-        sh 'python test/test.py'
-    }
-    stage('Ship') {
-        echo 'shipping...'
-    }
+    
 }
