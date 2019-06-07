@@ -24,4 +24,4 @@ def get_user():
 #    return db.get_user('jeHVBG0Uq6nzDbDrS0dy')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='8082')
+    app.run(host='0.0.0.0', port='8066')
