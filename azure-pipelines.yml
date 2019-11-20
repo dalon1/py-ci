@@ -31,7 +31,7 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: 'test/test-reports/*.xml'
+    testResultsFiles: 'test-reports/*.xml'
 
 - task: PythonScript@0
   displayName: "Run code analysis"
