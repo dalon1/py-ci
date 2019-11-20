@@ -17,11 +17,14 @@ steps:
     addToPath: true
     architecture: 'x64'
 
+- script: python3 --version
+  displayName: "Confirm python version"
+
 - task: PythonScript@0
   displayName: "Run unit testing"
   inputs:
     scriptSource: 'inline'
-    script: 'python test/test.py'
+    script: 'python3 test/test.py'
 
 - task: PublishTestResults@2
   inputs:
