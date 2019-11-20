@@ -20,6 +20,9 @@ steps:
 - script: python3 --version
   displayName: "Confirm python version"
 
+- script: python3 test/test.py
+  displayName: "unit testing 1"
+
 - task: PythonScript@0
   displayName: "Run unit testing"
   inputs:
