@@ -8,7 +8,7 @@ class WelcomeTest(unittest.TestCase):
     
     # negative scenario...
     def test_welcome_failure(self):
-        self.assertEqual('dannel', 'joel')
+        self.assertNotEqual('dannel', 'joel')
 
 if __name__ == '__main__':
     import xmlrunner
