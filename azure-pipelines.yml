@@ -10,10 +10,26 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: UsePythonVersion@0
+  displayName: "Adding python version"
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+    architecture: 'x64'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: PythonScript@0
+  displayName: "Run unit testing"
+  inputs:
+    scriptSource: 'inline'
+    script: 'python test/test.py'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'test/test-reports/*.xml'
+
+- task: PythonScript@0
+  displayName: "Run code analysis"
+  inputs:
+    scriptSource: 'inline'
+    script: 'pylint src/*.py'
