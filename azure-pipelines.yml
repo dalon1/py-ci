@@ -33,8 +33,6 @@ steps:
     testResultsFormat: 'JUnit'
     testResultsFiles: 'test-reports/*.xml'
 
-- task: PythonScript@0
+- script: |
+    pylint src/*.py
   displayName: "Run code analysis"
-  inputs:
-    scriptSource: 'inline'
-    script: 'pylint src/*.py'
