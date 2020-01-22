@@ -1,16 +1,6 @@
 FROM python:3.7-alpine
-
-MAINTAINER dannel
-
-RUN mkdir -p app
-WORKDIR app
-
-
-#Copy src code...
-COPY src src
-COPY test test
-
-#Install dependencies...
-RUN pip install flask
+COPY requirements.txt src /opt/app/
+WORKDIR /opt/app
+RUN pip install -r requirements.txt
 EXPOSE 8066
-ENTRYPOINT ["python", "src/app.py"]
+ENTRYPOINT ["python", "app.py"]
